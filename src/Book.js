@@ -7,14 +7,14 @@ class Book extends Component {
         .then(() => this.props.updateShelves(), () => alert('Erro ao mover livro de estante'))
     }
 
-    render() {
-        const { bookData } = this.props;
+    render() {        
+        const { bookData } = this.props;        
         return (
             <div className="book">
                 <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url("${typeof bookData.imageLinks !== 'undefined' ? bookData.imageLinks.thumbnail: null}")` }}></div>
                     <div className="book-shelf-changer">
-                        <select defaultValue={bookData.shelf} onChange={this.changeShelf}>
+                        <select value={bookData.shelf} onChange={this.changeShelf}>
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
