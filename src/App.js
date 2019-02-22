@@ -45,7 +45,6 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              <button style={{height: '25px', width: '25px'}} onClick={() => console.log(books)} />
               <div>
                 {books !== null &&
                 shelves.map(shelf => (
