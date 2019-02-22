@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
-import Book from './Book';
+import SearchResults from './SearchResults';
 
 class Search extends Component {
     state = {
@@ -56,14 +56,7 @@ class Search extends Component {
                         <input value={this.state.searchText} onChange={this.handleChange} type="text" placeholder="Search by title or author"/>                        
                     </div>
                 </div>
-                <div className="search-books-results">
-                    <ol className="books-grid">
-                        {
-                        this.state.foundBooks.map((book, index) => (
-                        <li key={index}><Book bookData={book} updateShelves={this.props.updateShelves}/></li>)                        )
-                        }  
-                    </ol>
-                </div>
+                <SearchResults books={this.state.foundBooks} updateShelves={this.props.updateShelves}/>
             </div>
         )
     }
