@@ -26,6 +26,15 @@ class Search extends Component {
         if(this.state.searchText.length === 0 || books.error) {
             this.setState({ foundBooks: [] });
         } else {
+            for(let i = 0; i < books.length; i++){
+                books[i].shelf = 'none'
+                for(const bookInShelf of this.props.alreadyInShelf){
+                    if(books[i].id === bookInShelf.id) {
+                        books[i].shelf = bookInShelf.shelf
+                    }
+                }
+            }
+            console.log(books)
             this.setState({ foundBooks: books });
         }
     }
