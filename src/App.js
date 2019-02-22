@@ -30,7 +30,8 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then(books => this.setState({ books }));
   }
 
-  render() {    
+  render() {
+    const { books } = this.state;
     return (
       <div className="app">
         <Route path='/search' component={Search} />
@@ -39,11 +40,14 @@ class BooksApp extends React.Component {
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
-            <div className="list-books-content">              
-              <div>                
-                {shelves.map(shelf => (
-                  <Shelf key={shelf.key} title={shelf.title} />
-                ))}
+            <div className="list-books-content">
+              <button style={{height: '25px', width: '25px'}} onClick={() => console.log(books)} />
+              <div>
+                {books !== null &&
+                shelves.map(shelf => (
+                  <Shelf key={shelf.key} title={shelf.title} books={books.filter(book => book.shelf === shelf.key)} />
+                ))
+                }
               </div>
             </div>
             <div className="open-search">
