@@ -30,6 +30,10 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then(books => this.setState({ books }));
   }
 
+  updateShelves = () => {
+    BooksAPI.getAll().then(books => this.setState({ books }));    
+  }
+
   render() {
     const { books } = this.state;
     return (
@@ -45,7 +49,7 @@ class BooksApp extends React.Component {
               <div>
                 {books !== null &&
                 shelves.map(shelf => (
-                  <Shelf key={shelf.key} title={shelf.title} books={books.filter(book => book.shelf === shelf.key)} />
+                  <Shelf key={shelf.key} title={shelf.title} books={books.filter(book => book.shelf === shelf.key)} updateShelves={this.updateShelves}/>
                 ))
                 }
               </div>
