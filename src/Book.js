@@ -24,7 +24,7 @@ class Book extends Component {
                     </div>
                 </div>
                 <div className="book-title">{bookData.title}</div>
-                <div className="book-authors">{bookData.authors.map((author, index) => (<div key={index}>{author}<br /></div>))}</div>
+                <div className="book-authors">{Array.isArray(bookData.authors) && bookData.authors.map((author, index) => (<div key={index}>{author}<br /></div>))}</div>
             </div>
         )
     }

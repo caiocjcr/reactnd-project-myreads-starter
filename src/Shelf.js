@@ -14,7 +14,7 @@ class Shelf extends Component {
                         books.map((book, index) => (
                         <li key={index}><Book bookData={book} updateShelves={this.props.updateShelves}/></li>)
                         )
-                        }         
+                        }
                     </ol>
                 </div>
             </div>
