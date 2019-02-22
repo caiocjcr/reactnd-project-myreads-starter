@@ -19,7 +19,7 @@ class Search extends Component {
 
     fetchBooks = query => {
         BooksAPI.search(query)
-        .then(books => books !== undefined && this.handleFoundBooks(books))        
+        .then(books => books !== undefined ? this.handleFoundBooks(books) : this.setState({ foundBooks: [] }))
     }
 
     handleFoundBooks = books => {
