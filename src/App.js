@@ -4,14 +4,15 @@ import './App.css'
 import Search from './Search'
 import Shelf from './Shelf'
 import { Route, Link } from 'react-router-dom';
+import { getAll } from './BooksAPI'
 
 const shelves = [
   {
-    key: 'current',
+    key: 'currentlyReading',
     title: 'Currently Reading'
   },
   {
-    key: 'want',
+    key: 'wantToRead',
     title: 'Want to Read'
   },
   {
