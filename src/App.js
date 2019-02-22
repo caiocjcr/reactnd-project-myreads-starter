@@ -1,10 +1,10 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 import Search from './Search'
 import Shelf from './Shelf'
 import { Route, Link } from 'react-router-dom';
-import { getAll } from './BooksAPI'
+
 
 const shelves = [
   {
@@ -23,9 +23,14 @@ const shelves = [
 
 class BooksApp extends React.Component {
   state = {    
+    books: null
   }
 
-  render() {
+  componentWillMount() {
+    BooksAPI.getAll().then(books => this.setState({ books }));
+  }
+
+  render() {    
     return (
       <div className="app">
         <Route path='/search' component={Search} />
@@ -34,7 +39,7 @@ class BooksApp extends React.Component {
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
-            <div className="list-books-content">
+            <div className="list-books-content">              
               <div>                
                 {shelves.map(shelf => (
                   <Shelf key={shelf.key} title={shelf.title} />
